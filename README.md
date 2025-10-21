@@ -32,13 +32,11 @@ Pros:
 - Home Assistant auto-discovery
 - Utility attaches to a selected specific HID device, so it doesn't affect any other attached keyboards or mice
 - You could connect lots of these to a single Pi in theory (untested)
+- Runs in Docker
 
 Cons:
 - Keycaps are not replaceable (I plan to upgrade ,I'd prefer clear keycaps so I can print icons)
 - You need a device to plug the receiver into that can run the utility in the background
-
-Todo:
-- Write Linux service configuration to auto-start on boot
 
 ## Installation
 
@@ -46,8 +44,8 @@ On your linux device eg Raspberry Pi, choose somewhere to install the program:
 
 ```bash
 cd ~/
-git clone https://github.com/That-Dude/Home-Assistant-Go-Keyboard
-cd Home-Assistant-Go-Keyboard
+git clone https://github.com/That-Dude/gokeyboard
+cd gokeyboard
 ```
 plug in your number pad (or wireless keyboard) and get the device name:
 ```bash
@@ -85,7 +83,35 @@ timing:
 ```
 run the utility:
 ```bash
-./go_keyboard
+./gokeyboardsudo apt install evtest
 ```
 
 And that's it, now when you press button on the keyboard it will show up in Home Assistant as a new Device with binary sensors for single, double and long presses.
+
+# Docker
+Ensure you have go installed.
+
+`bash
+docker build -t gokeyboard .
+`
+
+`
+docker compose up
+`
+Ensure everything is working and asuming it is:
+
+`
+docker compose up -d
+`
+To get the correct /dev/input/event ID for the docker compose file you could use evtest ,it was `/dev/input/event2` in my case:
+`
+sudo apt install evtest
+sudo evtest
+
+/dev/input/event0:	vc4-hdmi
+/dev/input/event1:	vc4-hdmi HDMI Jack
+/dev/input/event2:	YICHIP 2.4G Receiver
+/dev/input/event3:	YICHIP 2.4G Receiver Mouse
+/dev/input/event4:	YICHIP 2.4G Receiver System Control
+/dev/input/event5:	YICHIP 2.4G Receiver Consumer Control
+`
