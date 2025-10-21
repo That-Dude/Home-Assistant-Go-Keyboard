@@ -83,10 +83,15 @@ timing:
 ```
 run the utility:
 ```bash
-./gokeyboardsudo apt install evtest
+./gokeyboard
 ```
 
 And that's it, now when you press button on the keyboard it will show up in Home Assistant as a new Device with binary sensors for single, double and long presses.
+
+## Build from source
+```bash
+go build gokeyboard.go
+```
 
 # Docker
 Ensure you have go installed.
@@ -98,7 +103,7 @@ docker build -t gokeyboard .
 ```bash
 docker compose up
 ```
-Ensure everything is working and asuming it is:
+Ensure everything is working and if it is:
 
 ```bash
 docker compose up -d
