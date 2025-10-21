@@ -1,0 +1,11 @@
+services:
+  gokeyboard:
+    image: gokeyboard
+    container_name: gokeyboard
+    restart: always
+    privileged: true
+    devices:
+      - /dev/input/event2:/dev/input/event2
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    working_dir: /app
