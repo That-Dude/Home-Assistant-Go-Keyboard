@@ -91,20 +91,20 @@ And that's it, now when you press button on the keyboard it will show up in Home
 # Docker
 Ensure you have go installed.
 
-`bash
+```bash
 docker build -t gokeyboard .
-`
+```
 
-`
+```bash
 docker compose up
-`
+```
 Ensure everything is working and asuming it is:
 
-`
+```bash
 docker compose up -d
-`
+```
 To get the correct /dev/input/event ID for the docker compose file you could use evtest ,it was `/dev/input/event2` in my case:
-`
+```bash
 sudo apt install evtest
 sudo evtest
 
@@ -114,4 +114,4 @@ sudo evtest
 /dev/input/event3:	YICHIP 2.4G Receiver Mouse
 /dev/input/event4:	YICHIP 2.4G Receiver System Control
 /dev/input/event5:	YICHIP 2.4G Receiver Consumer Control
-`
+```
