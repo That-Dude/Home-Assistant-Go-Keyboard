@@ -1,0 +1,12 @@
+mqtt:
+  broker: "tcp://homeassistant.local:1883"
+  username: "mqttuser"
+  password: "mqttpassword"
+  device_id: "go_keyboard_numpad"
+
+input:
+  keyboard_name: "YICHIP 2.4G Receiver"
+
+timing:
+  double_press_ms: 250
+  long_press_ms: 500
