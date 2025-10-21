@@ -17,9 +17,7 @@ I already had a Raspberry Pi in the house acting as a Zigbee gateway, so I conne
 
 This works far better than I expected and it immediately gained approval from the family, so I extended the utility to add some additional features such as double-click and long-press detection.
 
-
-
-
+<img width="890" height="967" alt="Go-Keyboard" src="https://github.com/user-attachments/assets/e5df129e-48aa-4374-9d35-46b01bfa8640" />
 
 Pros
 - wireless dongle has a range of at least 20 meters
