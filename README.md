@@ -22,7 +22,7 @@ This works far better than I expected and it immediately gained approval from th
 <img width="890" height="967" alt="Go-Keyboard" src="https://github.com/user-attachments/assets/e5df129e-48aa-4374-9d35-46b01bfa8640" />
 
 ## Why do this?
-I think this is a pretty niche use case, but if you want physical button and you have a RPi already it works very well..
+I think this is a pretty niche use case, but if you want physical buttons and you have a RPi already it works well.
 
 Pros:
 - wireless dongle has a range of at least 20 meters
@@ -39,3 +39,46 @@ Cons:
 
 Todo:
 - Write Linux service configuration to auto-start on boot
+
+## Installation
+
+On your linux device eg Raspberry Pi, choose somewhere to install the program:
+
+cd ~/
+git clone https://github.com/That-Dude/Home-Assistant-Go-Keyboard
+cd Home-Assistant-Go-Keyboard
+
+plug in your number pad (or wireless keyboard) and get the device name:
+
+sudo cat /proc/bus/input/devices | grep Name=
+
+N: Name="vc4-hdmi"
+N: Name="vc4-hdmi HDMI Jack"
+N: Name="YICHIP 2.4G Receiver"
+N: Name="YICHIP 2.4G Receiver Mouse"
+N: Name="YICHIP 2.4G Receiver System Control"
+N: Name="YICHIP 2.4G Receiver Consumer Control"
+
+In this case my device is called "YICHIP 2.4G Receiver", make a note of this or copy it to the clipboard.
+
+mv config.yaml.example config.yaml
+nano config.yaml
+
+Update your MQTT details and add the device detected above to the 'keyboard_name' line:
+
+mqtt:
+  broker: "tcp://homeassistant.local:1883"
+  username: "mqttuser"
+  password: "mqttpassword"
+  device_id: "go_keyboard_numpad"
+
+input:
+  keyboard_name: "YICHIP 2.4G Receiver"
+
+timing:
+  double_press_ms: 250
+  long_press_ms: 500
+
+run the utility:
+
+./go_keyboard
