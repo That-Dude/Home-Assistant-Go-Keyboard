@@ -1,2 +1,10 @@
 # Home Assistant Go-Keyboard
-Use a regular wireless keyboard or numpad connected to a Raspbery Pi to control Home Assistant
+Use a regular wireless Keyboard or Numpad to control Home Assistant
+
+# Overview
+I have Home Assistant setup in my house to control a bunch of stuff. I have a tablet on the wall with a beautful clear theme that allows for lots of interactive control but my wife and kids hate using it.
+
+After some human behavioral testing I discovered that they really REALLY like pressing physical buttons to activate stuff. As a quick test I grabbed a cheap 2.4Ghz wireless numpad from Amazon (£5.20 delivered).
+
+
+
