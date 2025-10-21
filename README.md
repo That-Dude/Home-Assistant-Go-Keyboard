@@ -44,12 +44,13 @@ Todo:
 
 On your linux device eg Raspberry Pi, choose somewhere to install the program:
 
+```bash
 cd ~/
 git clone https://github.com/That-Dude/Home-Assistant-Go-Keyboard
 cd Home-Assistant-Go-Keyboard
-
+```
 plug in your number pad (or wireless keyboard) and get the device name:
-
+```bash
 sudo cat /proc/bus/input/devices | grep Name=
 
 N: Name="vc4-hdmi"
@@ -58,14 +59,17 @@ N: Name="YICHIP 2.4G Receiver"
 N: Name="YICHIP 2.4G Receiver Mouse"
 N: Name="YICHIP 2.4G Receiver System Control"
 N: Name="YICHIP 2.4G Receiver Consumer Control"
+```
+In this case my device is called `YICHIP 2.4G Receiver`, make a note of this or copy it to the clipboard.
 
-In this case my device is called "YICHIP 2.4G Receiver", make a note of this or copy it to the clipboard.
-
+```bash
 mv config.yaml.example config.yaml
 nano config.yaml
+```
 
 Update your MQTT details and add the device detected above to the 'keyboard_name' line:
 
+```
 mqtt:
   broker: "tcp://homeassistant.local:1883"
   username: "mqttuser"
@@ -78,7 +82,10 @@ input:
 timing:
   double_press_ms: 250
   long_press_ms: 500
-
+```
 run the utility:
-
+```bash
 ./go_keyboard
+```
+
+And that's it, now when you press button on the keyboard it will show up in Home Assistant as a new Device with binary sensors for single, double and long presses.
